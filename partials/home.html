@@ -1,0 +1,83 @@
+<div class="container container_border">    
+    <div class="row">
+        <div class="col-xs-12" style="margin-top:20px;">
+            <h2 style="font-family: 'Droid Sans', sans-serif;text-align:center;" class="text-primary">
+                Routes test</h2>
+            <!--<button class="btn btn-primary" ng-click="get()">get</button>
+            <button class="btn btn-info" ng-click="post()">post</button>-->
+            <button class="btn btn-info" ng-disabled="edit=='e'" ng-click="setNew()">New Player</button>
+            
+        </div>
+    </div>
+
+    <div class="row">
+        <div ng-class="{'col-xs-6':edit!='v','col-xs-12':edit=='v'}" style="margin-top:20px;">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="p in players">
+                        <td>{{p.dorsal}}</td>
+                        <td>{{p.name}}</td>
+                        <td>{{p.position}}</td>
+                        <td>
+                            <button class="btn btn-xs btn-info" ng-click="getPlayer(p.id)">Edit</button>
+                            <button class="btn btn-xs btn-danger" ng-click="deletePlayer(p.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+        <div class="col-xs-6" style="margin-top:20px;" ng-show="edit!='v'">
+            
+
+            <form class="form-horizontal" ng-disabled="1">
+               
+                <fieldset>
+                    <legend ng-if="edit=='n'">New Player</legend>
+                    <legend ng-if="edit=='e'">Edit Player</legend>
+                    <div style="background:#0ebfd6;text-align:center;  margin-bottom: 20px;">
+                    <img ng-if="currentPlayer.id && edit!='n'"  align="center" ng-src="{{END_POINT}}picture/{{currentPlayer.id}}"  ng-cloak>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">Dorsal</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputEmail" 
+                                   ng-model="currentPlayer.dorsal" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">Nombre</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputEmail"
+                                   ng-model="currentPlayer.name" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">Posicion</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputEmail" 
+                                   ng-model="currentPlayer.position" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button ng-click="cancel()" class="btn btn-default">Cancel</button>
+        <button ng-show="edit=='n'" ng-click="addPlayer()" class="btn btn-primary">Save</button>
+        <button ng-show="edit=='e'" ng-click="editPlayer()" class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
