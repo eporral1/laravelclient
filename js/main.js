@@ -58,7 +58,8 @@ app.config(['$httpProvider', function($httpProvider) {
 app.controller('PageCtrl', function ($scope, $location, $http ) {
 
     $scope.edit = "v";
-    $scope.END_POINT  = "http://localhost:8989/";
+   // $scope.END_POINT  = "http://localhost:8989/";
+    $scope.END_POINT  = "http://localhost/laravel/public/";
     //$scope.END_POINT  = "http://laravelapi0.herokuapp.com/";
     
     bootbox.setDefaults({
